@@ -37,7 +37,8 @@ public enum ResponseCode {
 
 
     // 201 Created
-    USER_CREATE_SUCCESS(HttpStatus.CREATED, true, "사용자 생성 성공");
+    USER_CREATE_SUCCESS(HttpStatus.CREATED, true, "사용자 생성 성공"),
+    CHALLENGE_CREATE_SUCCESS(HttpStatus.CREATED, true, "챌린지 생성 성공");
 
     private final HttpStatus httpStatus;
     private final Boolean success;
