@@ -12,19 +12,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class GoalServiceImpl  implements GoalService {
+public class GoalServiceImpl implements GoalService {
     private final UserRepository userRepository;
     private final GoalRepository goalRepository;
 
     @Override
-    public String createGoal(GoalCreateRequestDto dto, String userId) {
+    public String createGoal(Goal goal, String userId) {
         // 예외) 유저 존재 확인
         User user = userRepository.findById(userId).orElseThrow(() -> new BaseException(ResponseCode.USER_NOT_FOUND));
 
-        // 목표 생성
-        Goal goal = Goal.builder().goalName(dto.getGoalName()).state(dto.getState()).color(dto.getColor()).build();
+        // 목표 저장
         goalRepository.save(goal);
-
         return goal.getId();
     }
 
