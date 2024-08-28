@@ -10,12 +10,19 @@ import TodoChallengers.BE.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class GoalServiceImpl implements GoalService {
     private final UserRepository userRepository;
     private final GoalRepository goalRepository;
 
+    /**
+     * 단일 목표 생성
+     * @param dto
+     * @param userId
+     */
     @Override
     public String createGoal(GoalCreateRequestDto dto, String userId) {
         // 예외) 유저 존재 확인
@@ -27,6 +34,11 @@ public class GoalServiceImpl implements GoalService {
         return goal.getId();
     }
 
+    /**
+     * 단일 목표 수정
+     * @param goal
+     * @param userId
+     */
     @Override
     public String updateGoal(Goal goal, String userId) {
         // 예외) 유저 존재 확인
@@ -39,5 +51,13 @@ public class GoalServiceImpl implements GoalService {
         goalRepository.save(goal);
         return goal.getId();
 
+    }
+
+    /**
+     * 모든 목표 조회
+     */
+    @Override
+    public List<Goal> getAllGoals() {
+        return goalRepository.findAll();
     }
 }

@@ -12,12 +12,19 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/goal")
 @RequiredArgsConstructor
 public class GoalController {
 
     private final GoalService goalService;
+
+    @GetMapping("/")
+    public ApiResponse<List<Goal>> getAllGoals() {
+        return ApiResponse.success(goalService.getAllGoals(), ResponseCode.CHALLENGE_FINDALL_SUCCESS.getMessage());
+    }
 
     @PostMapping("/")
     public ApiResponse<String> createGoal(@Parameter(hidden = true) @Challenger User user, @RequestBody @Valid GoalCreateRequestDto dto) {
