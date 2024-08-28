@@ -34,6 +34,7 @@ public enum ResponseCode {
     USER_LOGIN_SUCCESS(HttpStatus.OK, true, "사용자 로그인 성공"),
     USER_TOKEN_REISSUE_SUCCESS(HttpStatus.OK, true, "사용자 토큰 재발급 성공"),
     USER_TOKEN_VALIDATE_SUCCESS(HttpStatus.OK, true, "사용자 토큰 검증 성공"),
+    CHALLENGE_UPDATE_SUCCESS(HttpStatus.OK, true, "챌린지 수정 성공"),
 
 
     // 201 Created

@@ -5,4 +5,5 @@ import TodoChallengers.BE.goal.dto.request.GoalCreateRequestDto;
 public interface GoalService {
     String createGoal(GoalCreateRequestDto dto, String userId);
 
+    String updateGoal(GoalCreateRequestDto dto, String id);
 }

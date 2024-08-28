@@ -9,10 +9,7 @@ import TodoChallengers.BE.user.domain.User;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/goal")
@@ -26,4 +23,8 @@ public class GoalController {
         return ApiResponse.success(goalService.createGoal(dto, user.getId()), ResponseCode.CHALLENGE_CREATE_SUCCESS.getMessage());
     }
 
+    @PutMapping("/")
+    public ApiResponse<String> updateGoal(@Parameter(hidden = true) @Challenger User user, @RequestBody @Valid GoalCreateRequestDto dto) {
+        return ApiResponse.success(goalService.updateGoal(dto, user.getId()), ResponseCode.CHALLENGE_UPDATE_SUCCESS.getMessage());
+    }
 }

@@ -27,4 +27,9 @@ public class GoalServiceImpl  implements GoalService {
 
         return goal.getId();
     }
+
+    @Override
+    public String updateGoal(GoalCreateRequestDto dto, String id) {
+        return "";
+    }
 }
