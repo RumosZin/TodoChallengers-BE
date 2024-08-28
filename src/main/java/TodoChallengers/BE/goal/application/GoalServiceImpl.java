@@ -19,7 +19,7 @@ public class GoalServiceImpl implements GoalService {
     @Override
     public String createGoal(Goal goal, String userId) {
         // 예외) 유저 존재 확인
-        User user = userRepository.findById(userId).orElseThrow(() -> new BaseException(ResponseCode.USER_NOT_FOUND));
+        userRepository.findById(userId).orElseThrow(() -> new BaseException(ResponseCode.USER_NOT_FOUND));
 
         // 목표 저장
         goalRepository.save(goal);
