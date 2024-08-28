@@ -6,5 +6,5 @@ import TodoChallengers.BE.goal.entity.Goal;
 public interface GoalService {
     String createGoal(Goal goal, String userId);
 
-    String updateGoal(GoalCreateRequestDto dto, String id);
+    String updateGoal(Goal goal, String userId);
 }

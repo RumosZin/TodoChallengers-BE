@@ -25,7 +25,7 @@ public class GoalController {
     }
 
     @PutMapping("/")
-    public ApiResponse<String> updateGoal(@Parameter(hidden = true) @Challenger User user, @PathVariable String id, @RequestBody @Valid GoalCreateRequestDto dto) {
-        return ApiResponse.success(goalService.updateGoal(dto, user.getId()), ResponseCode.CHALLENGE_UPDATE_SUCCESS.getMessage());
+    public ApiResponse<String> updateGoal(@Parameter(hidden = true) @Challenger User user, @RequestBody @Valid Goal goal) {
+        return ApiResponse.success(goalService.updateGoal(goal, user.getId()), ResponseCode.CHALLENGE_UPDATE_SUCCESS.getMessage());
     }
 }

@@ -27,7 +27,16 @@ public class GoalServiceImpl implements GoalService {
     }
 
     @Override
-    public String updateGoal(GoalCreateRequestDto dto, String id) {
-        return "";
+    public String updateGoal(Goal goal, String userId) {
+        // 예외) 유저 존재 확인
+        userRepository.findById(userId).orElseThrow(() -> new BaseException(ResponseCode.USER_NOT_FOUND));
+
+        // 예외) 목표 존재 확인
+        goalRepository.findById(goal.getId()).orElseThrow(() -> new BaseException(ResponseCode.CHALLENGE_NOT_FOUND));
+
+        // 목표 수정
+        goalRepository.save(goal);
+        return goal.getId();
+
     }
 }
