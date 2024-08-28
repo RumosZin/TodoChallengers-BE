@@ -20,8 +20,8 @@ public class GoalController {
     private final GoalService goalService;
 
     @PostMapping("/")
-    public ApiResponse<String> createGoal(@Parameter(hidden = true) @Challenger User user, @RequestBody @Valid Goal goal) {
-        return ApiResponse.success(goalService.createGoal(goal, user.getId()), ResponseCode.CHALLENGE_CREATE_SUCCESS.getMessage());
+    public ApiResponse<String> createGoal(@Parameter(hidden = true) @Challenger User user, @RequestBody @Valid GoalCreateRequestDto dto) {
+        return ApiResponse.success(goalService.createGoal(dto, user.getId()), ResponseCode.CHALLENGE_CREATE_SUCCESS.getMessage());
     }
 
     @PutMapping("/")
