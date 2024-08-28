@@ -35,4 +35,10 @@ public class GoalController {
     public ApiResponse<String> updateGoal(@Parameter(hidden = true) @Challenger User user, @RequestBody @Valid Goal goal) {
         return ApiResponse.success(goalService.updateGoal(goal, user.getId()), ResponseCode.CHALLENGE_UPDATE_SUCCESS.getMessage());
     }
+
+    @DeleteMapping("/")
+    public ApiResponse<String> deleteGoal(@Parameter(hidden = true) @Challenger User user, @RequestParam String goalId) {
+        goalService.deleteGoal(goalId, user.getId());
+        return ApiResponse.success(goalId, ResponseCode.CHALLENGE_DELETE_SUCCESS.getMessage());
+    }
 }

@@ -11,4 +11,6 @@ public interface GoalService {
     String updateGoal(Goal goal, String userId);
 
     List<Goal> getAllGoals();
+
+    void deleteGoal(String goalId, String id);
 }

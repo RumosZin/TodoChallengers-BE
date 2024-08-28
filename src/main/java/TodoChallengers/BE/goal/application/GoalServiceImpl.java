@@ -60,4 +60,12 @@ public class GoalServiceImpl implements GoalService {
     public List<Goal> getAllGoals() {
         return goalRepository.findAll();
     }
+
+    /**
+     * 단일 목표 삭제
+     */
+    @Override
+    public void deleteGoal(String goalId, String id) {
+        goalRepository.deleteById(goalId);
+    }
 }
